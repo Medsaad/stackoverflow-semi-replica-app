@@ -55,7 +55,7 @@ class Question {
         try {
             return await this.question.find(
                 { status: 'active' },
-                ['title', 'tags', 'upvotes', 'downvotes'],
+                ['title', 'body', 'tags', 'upvotes', 'downvotes'],
                 {
                     limit,
                     skip,
