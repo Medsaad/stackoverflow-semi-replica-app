@@ -38,18 +38,9 @@ class Tag {
         }
     }
 
-    async find(id) {
+    async find(name) {
         try {
-            return await this.tag.findOne({ _id: id });
-        } catch (error) {
-            console.log(error);
-            return { error: 'tag does not exists' };
-        }
-    }
-
-    async findByType(type) {
-        try {
-            return await this.tag.findOne({ type });
+            return await this.tag.findOne({ name });
         } catch (error) {
             console.log(error);
             return { error: 'tag does not exists' };

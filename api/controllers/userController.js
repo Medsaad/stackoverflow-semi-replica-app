@@ -19,10 +19,13 @@ exports.signup = async (req, res) => {
         return res.status(400).json({ errors: errors.array() });
     }
 
+    //extract data
+    const { email, password, name } = req.body;
+
     // check if email already exists
     let userExists;
     try {
-        userExists = await User.findByEmail(req.body.email);
+        userExists = await User.findByEmail(email);
     } catch (error) {
         console.log('Error [User Not Added]', error);
         res.send(error);
@@ -33,14 +36,14 @@ exports.signup = async (req, res) => {
     }
 
     // hashing password
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     const userObj = {
-        email: req.body.email,
+        email: email,
         password: hashedPassword,
     };
 
-    if (req.body.name && req.body.name !== '') {
+    if (name) {
         userObj.name = req.body.name;
     }
 

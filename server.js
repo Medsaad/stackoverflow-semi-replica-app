@@ -26,8 +26,8 @@ app.get('/', (req, res) => {
     res.send('API Home');
 });
 app.use('/users', require('./api/routes/userRoutes'));
-/* app.use('/questions', require('./api/routes/questionRoutes'));
-app.use('/answers', require('./api/routes/answerRoutes')); */
+app.use('/questions', require('./api/routes/questionRoutes'));
+/* app.use('/answers', require('./api/routes/answerRoutes')); */
 
 app.listen(port, () => {
     console.log(`Node.js + MongoDB RESTful API server started on: ${port}`);
